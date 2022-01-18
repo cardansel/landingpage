@@ -1,10 +1,14 @@
 import React from 'react';
+import {BrowserRouter as Router,NavLink,Route} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import logo from './logo.svg';
-import './App.css';
+import './sass/app.scss';
 import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {Home} from './components/Home';
+import {AddMessage, AddUser} from './components/AddMessage';
+import{EditMessage} from './components/EditMessage';
 
 const BaseUrl='http://localhost:8000/api/comments'
 
@@ -24,20 +28,15 @@ useEffect(async()=>{
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Router>
+       <h1>Nav</h1>
+       <NavLink>
+        <Home />
+        <AddMessage />
+        <EditMessage />
+       </NavLink>
+     </Router>
+  
     </div>
   );
 }
